@@ -1,7 +1,9 @@
 package com.customerservice.entities;
 
+import com.customerservice.enums.Gender;
 import jakarta.persistence.*;
 import lombok.Data;
+import org.antlr.v4.runtime.misc.NotNull;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -17,14 +19,21 @@ public class Customer {
     @Column(name = "customer_id")
     private UUID customerId;
 
+    @NotNull
     @Column(name = "firstname")
     private String firstName;
 
+    @NotNull
     @Column(name = "lastname")
     private String lastName;
 
+    @NotNull
     @Column(name = "age")
     private int age;
+
+   @NotNull
+   @Enumerated(EnumType.STRING)
+    private Gender gender;
 
     @Embedded
     private Address address;
