@@ -4,16 +4,18 @@ import com.customerservice.dtos.CustomerDto;
 import com.customerservice.entities.Customer;
 import com.customerservice.services.CustomerService;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.annotations.ApiParam;
 
-import java.util.UUID;
+
 
 @RestController
 @RequestMapping("/customers")
 
 public class CustomerController {
+    @Autowired
     private CustomerService customerService;
 
     public CustomerController(CustomerService customerService)
@@ -28,8 +30,8 @@ public class CustomerController {
 
     }
 
-    @GetMapping
-    public CustomerDto getCustomerById(@PathVariable @ApiParam(value = "customerId",example = "6ace0d48-43ee-459c-ad80-6c1efd077ebb")UUID id){
+    @GetMapping("/{id}")
+    public CustomerDto getCustomerById(@PathVariable Integer id){
         return customerService.getCustomerById(id);
 
 

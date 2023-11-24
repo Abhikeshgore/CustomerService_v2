@@ -12,14 +12,15 @@ import java.util.UUID;
 
 @Data
 public class CustomerDto {
-    private UUID customerId;
+    private Integer Id;
+    private String externalId;
     @NotBlank(message ="Firstname is mandatory")
     private String firstName;
     @NotBlank(message ="LastName is mandatory")
     private String lastName;
     @Positive(message = "Age should be greater than 0")
     private int age;
-    @NotBlank(message = "Gender is mandatory")
+
     private Gender gender;
     @NotNull(message = "Address is mandatory")
     @Valid

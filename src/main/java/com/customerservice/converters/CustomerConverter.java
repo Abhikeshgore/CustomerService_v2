@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.customerservice.dtos.CustomerDto;
+import com.customerservice.entities.Address;
 import com.customerservice.entities.Customer;
 import org.springframework.stereotype.Component;
 
@@ -12,12 +13,13 @@ public class CustomerConverter {
     public CustomerDto entityToDto(Customer customer)
     {
         CustomerDto customerDto = new CustomerDto();
+       // customerDto.setExternalId(customer.getExternalId());
         customerDto.setFirstName(customer.getFirstName());
         customerDto.setLastName(customer.getLastName());
         customerDto.setAge(customer.getAge());
-        customerDto.setCustomerId(customer.getCustomerId());
+        customerDto.setId(customer.getId());
         customerDto.setGender(customer.getGender());
-        customerDto.setCurrentAddress(customer.getAddress());
+        customerDto.setCurrentAddress((Address) customer.getAddress());
         return  customerDto;
 
     }
@@ -31,12 +33,13 @@ public class CustomerConverter {
     public Customer dtoToEntity(CustomerDto customerDto)
     {
         Customer customer=new Customer();
+       // customer.setExternalId(customerDto.getExternalId());
         customer.setFirstName(customerDto.getFirstName());
-        customer.setFirstName(customerDto.getLastName());
+        customer.setLastName(customerDto.getLastName());
         customer.setAge(customerDto.getAge());
-        customer.setCustomerId(customerDto.getCustomerId());
+        customer.setId(customerDto.getId());
         customer.setGender(customerDto.getGender());
-        customer.setAddress(customerDto.getCurrentAddress());
+        customer.setAddress((List<Address>) customerDto.getCurrentAddress());
         return customer;
     }
 
