@@ -10,6 +10,8 @@ import com.customerservice.dtos.CustomerDto;
 import com.customerservice.services.AddressService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/customers/{id}/addresss")
 public class AddressController {
@@ -22,9 +24,9 @@ public class AddressController {
     }
 
     @PutMapping
-    public CustomerDto updateAddress(@PathVariable(name = "id") @ApiParam(value = "customerID")
-                                     Integer id,@Valid @RequestBody AddressDto address){
-        return addressService.updateAddress(id,address);
+    public CustomerDto updateAddress(@PathVariable(name = "externalId") @ApiParam(value = "customerID")
+                                     UUID externalId, @Valid @RequestBody AddressDto address){
+        return addressService.updateAddress(externalId,address);
 
     }
 }

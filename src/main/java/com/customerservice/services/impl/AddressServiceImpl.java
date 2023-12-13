@@ -12,6 +12,7 @@ import com.customerservice.repositories.CustomerRepository;
 import com.customerservice.services.AddressService;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -33,10 +34,13 @@ public class AddressServiceImpl  implements AddressService {
     }
 
     @Override
-    public CustomerDto updateAddress(Integer id, AddressDto addressDto) {
-        Customer customer = customerRepo.findById(id).orElseThrow(() -> new CustomerNotFoundException(ErrorConstant.CUSTOMER_NOT_FOUND));
-        customer.setAddress((List<Address>) addressConverter.DtoToEntity(addressDto));
+    public CustomerDto updateAddress(UUID externalId, AddressDto addressDto) {
+        List<Address> addressList = new ArrayList<>();
+        addressList.add(addressConverter.DtoToEntity(addressDto));
+        Customer customer = customerRepo.findById(externalId).orElseThrow(() -> new CustomerNotFoundException(ErrorConstant.CUSTOMER_NOT_FOUND));
+        customer.setAddress(addressList);
         return customerConverter.entityToDto(customerRepo.save(customer));
 
     }
 }
+

@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.annotations.ApiParam;
 
+import java.util.UUID;
 
 
 @RestController
@@ -30,9 +31,10 @@ public class CustomerController {
 
     }
 
-    @GetMapping("/{id}")
-    public CustomerDto getCustomerById(@PathVariable Integer id){
-        return customerService.getCustomerById(id);
+    @GetMapping("/{externalId}")
+    public CustomerDto getCustomerById(@PathVariable @ApiParam(value = "externalId",example = "7e056083-752e-44fb-9de4-409e83aecc6c") UUID externalId)
+    {
+        return customerService.getCustomerById(externalId);
 
 
     }

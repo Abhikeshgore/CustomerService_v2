@@ -3,8 +3,9 @@ package com.customerservice.services;
 import com.customerservice.dtos.AddressDto;
 import com.customerservice.dtos.CustomerDto;
 
+import java.util.UUID;
 
 
 public interface AddressService {
-    CustomerDto updateAddress(Integer id, AddressDto addressDto);
+    CustomerDto updateAddress(UUID externalId, AddressDto addressDto);
 }

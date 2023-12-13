@@ -8,6 +8,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -24,7 +25,7 @@ public class CustomerDto {
     private Gender gender;
     @NotNull(message = "Address is mandatory")
     @Valid
-    private Address currentAddress;
+    private List<Address> currentAddress;
 
 
 

@@ -22,31 +22,34 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-//    @Column(unique = true)
-//    private String externalId; //External UUID
-//
-//    @PrePersist
-//    public void prePersist()
-//    {
-//        this.externalId= UUID.randomUUID().toString();
-//    }
+    @Column(unique = true)
+    private String externalId; //External UUID
+
+    @PrePersist
+    public void prePersist()
+    {
+        this.externalId= UUID.randomUUID().toString();
+    }
 
 
-    @NotBlank(message = "Firstname is mandatory")
+
     @Column(name = "firstname")
     private String firstName;
 
-    @NotBlank(message = "Lastname is mandatory")
+
     @Column(name = "lastname")
     private String lastName;
 
-    @NotBlank(message = "Mandatory")
+
     @Column(name = "age")
     private int age;
 
-   @NotEmpty(message = "Mandatory")
+//   @NotEmpty(message = "Mandatory")
    @Enumerated(EnumType.STRING)
     private Gender gender;
+
+    @Column (name="address_id")
+    private Integer address_id;
 
     @OneToMany(cascade =  CascadeType.ALL)
     @JoinColumn(name = "address_id",referencedColumnName = "id")

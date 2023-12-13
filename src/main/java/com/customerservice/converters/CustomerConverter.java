@@ -13,13 +13,16 @@ public class CustomerConverter {
     public CustomerDto entityToDto(Customer customer)
     {
         CustomerDto customerDto = new CustomerDto();
-       // customerDto.setExternalId(customer.getExternalId());
+        //changes here
+        customerDto.setExternalId(customer.getExternalId());
         customerDto.setFirstName(customer.getFirstName());
         customerDto.setLastName(customer.getLastName());
         customerDto.setAge(customer.getAge());
         customerDto.setId(customer.getId());
         customerDto.setGender(customer.getGender());
-        customerDto.setCurrentAddress((Address) customer.getAddress());
+        //changes here
+        //customerDto.setCurrentAddress((Address) customer.getAddress());
+        customerDto.setCurrentAddress(customer.getAddress());
         return  customerDto;
 
     }
@@ -33,7 +36,8 @@ public class CustomerConverter {
     public Customer dtoToEntity(CustomerDto customerDto)
     {
         Customer customer=new Customer();
-       // customer.setExternalId(customerDto.getExternalId());
+        //changes here
+        customer.setExternalId(customerDto.getExternalId());
         customer.setFirstName(customerDto.getFirstName());
         customer.setLastName(customerDto.getLastName());
         customer.setAge(customerDto.getAge());
