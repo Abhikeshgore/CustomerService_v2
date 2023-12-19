@@ -31,7 +31,7 @@ public class CustomerController {
 
     }
 
-    @GetMapping("/{externalId}")
+    @GetMapping("/customers/{externalId}")
     public CustomerDto getCustomerById(@PathVariable @ApiParam(value = "externalId",example = "7e056083-752e-44fb-9de4-409e83aecc6c") UUID externalId)
     {
         return customerService.getCustomerById(externalId);

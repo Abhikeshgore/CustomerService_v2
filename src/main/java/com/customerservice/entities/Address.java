@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Data
@@ -13,7 +14,19 @@ import java.util.List;
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer address_id;
+
+    //changes here
+
+    @Column(unique = true)
+    private String externalAddress_Id;
+
+    @PrePersist
+    public void prePersist() {
+        this.externalAddress_Id = UUID.randomUUID().toString();
+    }
+    //end
+
     @Column(name="house_number")
     private String houseNumber;
 

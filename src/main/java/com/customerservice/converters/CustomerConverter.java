@@ -18,7 +18,10 @@ public class CustomerConverter {
         customerDto.setFirstName(customer.getFirstName());
         customerDto.setLastName(customer.getLastName());
         customerDto.setAge(customer.getAge());
-        customerDto.setId(customer.getId());
+        //changed here
+//        customerDto.setCustomer_id((customer.getCustomer_id()));
+       customerDto.setId(customer.getId());
+
         customerDto.setGender(customer.getGender());
         //changes here
         //customerDto.setCurrentAddress((Address) customer.getAddress());
@@ -41,6 +44,8 @@ public class CustomerConverter {
         customer.setFirstName(customerDto.getFirstName());
         customer.setLastName(customerDto.getLastName());
         customer.setAge(customerDto.getAge());
+        //changed here
+//        customer.setCustomer_id(customerDto.getCustomer_id());
         customer.setId(customerDto.getId());
         customer.setGender(customerDto.getGender());
         customer.setAddress((List<Address>) customerDto.getCurrentAddress());

@@ -9,6 +9,7 @@ public class AddressConverter {
   public Address DtoToEntity(AddressDto addressDto)
   {
       Address address =new Address();
+      address.setExternalAddress_Id(addressDto.getExternalAddress_Id());
       address.setHouseNumber(addressDto.getHouseNumber());
       address.setStreet(addressDto.getStreet());
       address.setCity(addressDto.getCity());

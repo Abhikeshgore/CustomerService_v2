@@ -21,6 +21,7 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+//    private Integer customer_id;
 
     @Column(unique = true)
     private String externalId; //External UUID
@@ -48,11 +49,12 @@ public class Customer {
    @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    @Column (name="address_id")
-    private Integer address_id;
+//   @Column (name="address_id")
+//   private Integer address_id;
 
-    @OneToMany(cascade =  CascadeType.ALL)
-    @JoinColumn(name = "address_id",referencedColumnName = "id")
+
+    @OneToMany(targetEntity = Address.class ,cascade =  CascadeType.ALL)
+    @JoinColumn(name = "ca_fk",referencedColumnName = "id")
     @JsonIgnoreProperties("customer")
     private List<Address> address;
 
