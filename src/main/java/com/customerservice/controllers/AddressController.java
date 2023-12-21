@@ -2,7 +2,8 @@ package com.customerservice.controllers;
 
 
 import com.customerservice.dtos.AddressDto;
-import io.swagger.annotations.ApiParam;
+
+import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.validation.Valid;
 
 
@@ -24,7 +25,7 @@ public class AddressController {
     }
 
     @PutMapping
-    public CustomerDto updateAddress(@PathVariable(name = "externalId") @ApiParam(value = "customerID")
+    public CustomerDto updateAddress(@PathVariable(name = "externalId") @Parameter(name = "customerID")
                                      UUID externalId, @Valid @RequestBody AddressDto address){
         return addressService.updateAddress(externalId,address);
 
