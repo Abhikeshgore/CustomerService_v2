@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/customers/{id}/addresss")
+@RequestMapping("/customers/{id}/addresses")
 public class AddressController {
 
     private AddressService addressService;
