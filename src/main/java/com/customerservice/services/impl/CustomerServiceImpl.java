@@ -16,9 +16,7 @@ import java.util.UUID;
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
-    @Autowired
     private CustomerRepository customerRepo;
-    @Autowired
     private CustomerConverter customerConverter;
 
     public CustomerServiceImpl(CustomerRepository customerRepo,CustomerConverter customerConverter){
@@ -30,8 +28,6 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public CustomerDto addCustomer(CustomerDto customerDto) {
         Customer customer = customerConverter.dtoToEntity(customerDto);
-       // Gender.valueOf();
-
         return  customerConverter.entityToDto(customerRepo.save(customer)) ;
     }
 
