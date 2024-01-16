@@ -32,7 +32,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public CustomerDto getCustomerById(UUID externalId) {
+    public CustomerDto getCustomerById(String externalId) {
 
         Customer customer= customerRepo.findByExternalId(externalId.toString())
                 .orElseThrow(()->new CustomerNotFoundException(ErrorConstant.CUSTOMER_NOT_FOUND));

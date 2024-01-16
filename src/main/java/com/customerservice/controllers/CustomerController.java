@@ -40,7 +40,7 @@ public class CustomerController {
             description = "It is used to retrieve customer object in database using customer id"
      )
     @GetMapping("/{externalId}")
-    public CustomerDto getCustomerById(@PathVariable @Parameter(name = "externalId",example = "7e056083-752e-44fb-9de4-409e83aecc6c") UUID externalId)
+    public CustomerDto getCustomerById(@PathVariable @Parameter(name = "externalId",example = "7e056083-752e-44fb-9de4-409e83aecc6c") String externalId)
     {
         return customerService.getCustomerById(externalId);
 

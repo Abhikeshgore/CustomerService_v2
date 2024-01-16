@@ -8,6 +8,6 @@ import java.util.UUID;
 public interface CustomerService {
         CustomerDto addCustomer(CustomerDto customerDto);
 
-        CustomerDto getCustomerById(UUID externalId);
+        CustomerDto getCustomerById(String externalId);
 
 }
