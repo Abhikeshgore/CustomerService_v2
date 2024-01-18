@@ -35,9 +35,9 @@ public class AddressServiceImpl  implements AddressService {
 
     @Override
     public CustomerDto updateAddress(UUID externalId, AddressDto addressDto) {
+        Customer customer = customerRepo.findById(externalId).orElseThrow(() -> new CustomerNotFoundException(ErrorConstant.CUSTOMER_NOT_FOUND));
         List<Address> addressList = new ArrayList<>();
         addressList.add(addressConverter.DtoToEntity(addressDto));
-        Customer customer = customerRepo.findById(externalId).orElseThrow(() -> new CustomerNotFoundException(ErrorConstant.CUSTOMER_NOT_FOUND));
         customer.setAddress(addressList);
         return customerConverter.entityToDto(customerRepo.save(customer));
 
