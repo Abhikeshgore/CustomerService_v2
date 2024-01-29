@@ -18,8 +18,8 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(unique = true)
-    private String externalId; //External UUID
+    @Column(name ="externalId",unique = true)
+    private String externalId;
 
     @PrePersist
     public void prePersist()
@@ -52,11 +52,11 @@ public class Customer {
     private List<Address> currentAddress;
 
     @CreationTimestamp
-    @Column(name ="creation_time")
+    @Column(name ="creation_Time")
     private LocalDateTime createdTime;
 
     @UpdateTimestamp
-    @Column(name = " update_time")
+    @Column(name = " update_Time")
     private LocalDateTime updateTime;
 
 
