@@ -1,8 +1,9 @@
 package com.customerservice.services.impl;
 
-import com.customerservice.converters.CustomerConverter;
+//import com.customerservice.converters.CustomerConverter;
 import com.customerservice.dtos.CustomerDto;
 import com.customerservice.entities.Customer;
+import com.customerservice.mapper.CustomerMapper;
 import com.customerservice.repositories.CustomerRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,8 +22,10 @@ public class CustomerServiceImplTest {
     private CustomerServiceImpl customerService;
     @Mock
     private CustomerRepository customerRepository;
-    @Mock
-    private CustomerConverter customerConverter;
+   @Mock
+    private CustomerMapper customerMapper;
+//   private CustomerConverter customerConverter;
+
     private Customer customer;
     private CustomerDto customerDto;
     private String externalId;
@@ -42,9 +45,11 @@ public class CustomerServiceImplTest {
 
     @Test
     public void testAddCustomer(){
-        when(customerConverter.dtoToEntity(customerDto)).thenReturn(customer);
+//        when(customerConverter.dtoToEntity(customerDto)).thenReturn(customer);
+        when(customerMapper.dtoToEntity(customerDto)).thenReturn(customer);
         when(customerRepository.save(customer)).thenReturn(customer);
-        when(customerConverter.entityToDto(customer)).thenReturn(customerDto);
+//        when(customerConverter.entityToDto(customer)).thenReturn(customerDto);
+       when(customerMapper.entityToDto(customer)).thenReturn(customerDto);
 
         CustomerDto addedCustomer = customerService.addCustomer(customerDto);
         Assertions.assertEquals(addedCustomer.getFirstName(),customer.getFirstName());
@@ -54,7 +59,8 @@ public class CustomerServiceImplTest {
     public void testGetCustomerById(){
         Optional<Customer> optionalCustomer = Optional.of(customer);
         when(customerRepository.findByExternalId(externalId)).thenReturn(optionalCustomer);
-        when(customerConverter.entityToDto(customer)).thenReturn(customerDto);
+//        when(customerConverter.entityToDto(customer)).thenReturn(customerDto);
+        when(customerMapper.entityToDto(customer)).thenReturn(customerDto);
         Assertions.assertEquals(customerService.getCustomerById(externalId).getFirstName(),customer.getFirstName());
     }
 

@@ -62,8 +62,8 @@ public class CustomerTest {
         addresses.add(address1);
         addresses.add(address2);
 
-        customer.setAddress(addresses);
-        Assertions.assertEquals(addresses,customer.getAddress());
+        customer.setCurrentAddress(addresses);
+        Assertions.assertEquals(addresses,customer.getCurrentAddress());
 
     }
 
