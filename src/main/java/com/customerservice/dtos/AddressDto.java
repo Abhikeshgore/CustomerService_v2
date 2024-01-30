@@ -17,5 +17,6 @@ public class AddressDto {
     private String province;
     private String country;
     private String pincode;
+    private String nationality;
 
 }

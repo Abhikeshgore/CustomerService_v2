@@ -3,6 +3,7 @@ package com.customerservice.entities;
 import com.customerservice.enums.Gender;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -18,7 +19,7 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name ="externalId",unique = true)
+    @Column(name ="externalid",unique = true)
     private String externalId;
 
     @PrePersist
@@ -43,6 +44,11 @@ public class Customer {
 
    @Enumerated(EnumType.STRING)
     private Gender gender;
+
+    @Column(name = "nationality")
+    @NotBlank(message = "Nationality is mandatory")
+    private String nationality;
+
 
 
 
