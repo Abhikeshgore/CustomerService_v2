@@ -3,6 +3,7 @@ package com.customerservice.entities;
 import com.customerservice.enums.Gender;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -18,8 +19,8 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(unique = true)
-    private String externalId; //External UUID
+    @Column(name ="externalid",unique = true)
+    private String externalId;
 
     @PrePersist
     public void prePersist()
@@ -44,6 +45,11 @@ public class Customer {
    @Enumerated(EnumType.STRING)
     private Gender gender;
 
+    @Column(name = "nationality")
+    @NotBlank(message = "Nationality is mandatory")
+    private String nationality;
+
+
 
 
     @OneToMany(targetEntity = Address.class ,cascade =  CascadeType.ALL)
@@ -52,11 +58,11 @@ public class Customer {
     private List<Address> currentAddress;
 
     @CreationTimestamp
-    @Column(name ="creation_time")
+    @Column(name ="creation_Time")
     private LocalDateTime createdTime;
 
     @UpdateTimestamp
-    @Column(name = " update_time")
+    @Column(name = " update_Time")
     private LocalDateTime updateTime;
 
 

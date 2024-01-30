@@ -16,7 +16,7 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer address_id;
     //changes here
-    @Column(unique = true)
+    @Column(name ="externaladdressId",unique = true)
     private String externalAddress_Id;
     @PrePersist
     public void prePersist() {
